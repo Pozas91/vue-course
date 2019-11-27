@@ -10,7 +10,11 @@
     <div id="app">
         <button v-on:click="increase(2, $event)">Click me</button>
         <p>{{counter}}</p>
-        <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+        <p v-on:mousemove="updateCoordinates">
+            Coordinates: {{ x }} / {{ y }}
+            -
+            <span v-on:mousemove.stop>DEAD SPOT</span>
+        </p>
     </div>
     <div id="scripts">
         <script type="text/javascript">
@@ -28,6 +32,9 @@
                     updateCoordinates: function (event) {
                         this.x = event.clientX;
                         this.y = event.clientY;
+                    },
+                    dummy: function(event) {
+                        event.stopPropagation();
                     }
                 }
             });
