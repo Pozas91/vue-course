@@ -5,23 +5,43 @@
     <title>Vue Course</title>
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style type="text/css" rel="stylesheet">
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            display: inline-block;
+            margin: 10px
+        }
+
+        .red {
+            background-color: red !important;
+        }
+
+        .green {
+            background-color: green !important;
+        }
+
+        .blue {
+            background-color: blue !important;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <button @click="changeLink">Click to Change Link</button>
-        <a :href="link">Link</a>
+        <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div>
+        <div class="demo" @click="attachGreen = !attachGreen" :class="{green: attachGreen}"></div>
+        <div class="demo" @click="attachBlue = !attachBlue" :class="{blue: attachBlue}"></div>
     </div>
     <div id="scripts">
         <script type="text/javascript">
             new Vue({
                 el: '#app',
                 data: {
-                    link: 'http://google.com'
-                },
-                methods: {
-                    changeLink: function () {
-                        this.link = 'http://apple.com'
-                    }
+                    attachRed: false,
+                    attachGreen: false,
+                    attachBlue: false,
                 }
             });
         </script>
