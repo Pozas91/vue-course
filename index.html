@@ -7,9 +7,21 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+    <div id="app">
+        <p v-if="show">You can see me! <span>Hello!</span></p>
+        <p v-else>Now you see me!</p>
+        <p>Do you also see me?</p>
+        <button @click="show = !show">Switch</button>
+    </div>
+
     <div id="scripts">
         <script type="text/javascript">
-
+            new Vue({
+                el: '#app',
+                data: {
+                    show: false
+                }
+            });
         </script>
     </div>
 </body>
