@@ -29,6 +29,8 @@ let vm1 = new Vue({
     }
 });
 
+vm1.$mount('#app1');
+
 vm1.newPro = 'New!';
 console.log(vm1.$data === data);
 vm1.$refs.heading.innerText = 'Something else';
@@ -41,26 +43,20 @@ setTimeout(function () {
 let vm2 = new Vue({
     el: '#app2',
     data: {
-        title: 'The VueJS Instance',
-        showParagraph: false
+        title: 'The second Instance',
     },
     methods: {
-        show: function () {
-            this.showParagraph = true;
-            this.updateTitle('The VueJS Instance (Updated)');
-        },
-        updateTitle: function (title) {
-            this.title = title;
+        onChange: function () {
+            vm1.title = 'Changed!';
         }
     },
-    computed: {
-        lowercaseTitle: function () {
-            return this.title.toLowerCase();
-        }
-    },
-    watch: {
-        title: function (value) {
-            alert('Title changed, new value: ' + value);
-        }
-    }
 });
+
+let vm3 = new Vue({
+    template: '<h1>Hello!</h1>'
+});
+
+vm3.$mount('#app3');
+
+// vm3.$mount();
+// document.getElementById('app3').appendChild(vm3.$el);
