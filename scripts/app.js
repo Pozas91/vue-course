@@ -10,6 +10,8 @@ let vm1 = new Vue({
         show: function () {
             this.showParagraph = true;
             this.updateTitle('The VueJS Instance (Updated)');
+            this.$refs.myButton.innerText = 'Test';
+            console.log(this.$refs.myButton);
         },
         updateTitle: function (title) {
             this.title = title;
@@ -29,6 +31,7 @@ let vm1 = new Vue({
 
 vm1.newPro = 'New!';
 console.log(vm1.$data === data);
+vm1.$refs.heading.innerText = 'Something else';
 
 setTimeout(function () {
     vm1.title = 'Changed by Timer';
