@@ -4,6 +4,7 @@
     <p>Many Details</p>
     <p>User Name: {{switchName()}}</p>
     <button @click="resetName">Reset Name</button>
+    <button @click="resetFn()">Reset Name</button>
   </div>
 </template>
 
@@ -20,7 +21,8 @@
         //     name: 'Max'
         //   }
         // }
-      }
+      },
+      resetFn: Function
     },
     methods: {
       switchName() {
