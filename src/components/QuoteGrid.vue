@@ -1,11 +1,13 @@
 <template>
-    
+  <div class="row">
+
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "QuoteGrid"
-    }
+  export default {
+    props: ['quotes']
+  }
 </script>
 
 <style scoped>
