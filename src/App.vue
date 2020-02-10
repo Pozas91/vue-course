@@ -2,7 +2,7 @@
   <div class="container">
     <form>
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="col-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <h1>File a Complaint</h1>
           <hr>
           <div class="form-group">
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+        <div class="col-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
           <label for="message">Message</label><br>
           <!-- Interpolation between <textarea>{{ test }}</textarea> doesn't work!-->
           <textarea
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="col-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <div class="form-group">
             <label for="sendmail">
               <input
@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+        <div class="col-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
           <label for="male">
             <input
               type="radio"
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
+        <div class="col-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
           <label for="priority">Priority</label>
           <select
             id="priority"
@@ -105,21 +105,22 @@
       </div>
       <hr/>
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="col-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <button
-            class="btn btn-primary">Submit!
+            class="btn btn-primary"
+            @click.prevent="submitted">Submit!
           </button>
         </div>
       </div>
     </form>
     <hr>
-    <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
+    <div class="row" v-if="isSubmitted">
+      <div class="col-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="card card-info">
+          <div class="card-header">
             <h4>Your Data</h4>
           </div>
-          <div class="panel-body">
+          <div class="card-body">
             <p>Mail: {{userData.email}}</p>
             <p>Password: {{userData.password}}</p>
             <p>Age: {{userData.age}}</p>
@@ -154,7 +155,13 @@
         gender: 'Male',
         selectedPriority: 'High',
         priorities: ['High', 'Medium', 'Low'],
-        dataSwitch: true
+        dataSwitch: true,
+        isSubmitted: false
+      }
+    },
+    methods: {
+      submitted() {
+        this.isSubmitted = true;
       }
     },
     components: {
