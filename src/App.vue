@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <h1>Filters & Mixins</h1>
-        <p>{{text | toUppercase }}</p>
+        <p>{{text | toUppercase | toLowercase }}</p>
       </div>
     </div>
   </div>
