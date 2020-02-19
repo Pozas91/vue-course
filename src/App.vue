@@ -12,6 +12,10 @@
         <transition name="slide" type="animation">
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
+        <!-- With appear attribute the animation trigger occurs after dom is loaded-->
+        <transition name="fade" appear>
+          <div class="alert alert-info" v-if="show">This is some info</div>
+        </transition>
       </div>
     </div>
   </div>
