@@ -4,29 +4,40 @@
       <div class="col-12">
         <h1>Animations and Transitions</h1>
         <hr>
+
         <select v-model="alertAnimation" class="form-control">
           <option value="fade">Fade</option>
           <option value="slide">Slide</option>
         </select>
+
         <br/>
         <button class="btn btn-primary" @click="show = !show">Show Alert</button>
         <br/> <br/>
+
         <transition :name="alertAnimation">
           <div class="alert alert-info" v-show="show">This is some info</div>
         </transition>
+
         <transition name="slide" type="animation" appear>
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
+
         <!-- With appear attribute the animation trigger occurs after dom is loaded-->
         <transition name="fade">
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
+
         <transition
           appear
           enter-active-class="animated bounce"
           leave-active-class="animated shake"
         >
           <div class="alert alert-info" v-if="show">This is some info</div>
+        </transition>
+
+        <transition :name="alertAnimation" mode="out-in">
+          <div class="alert alert-info" v-if="show" key="info">This is some info</div>
+          <div class="alert alert-warning" v-else key="warning">This is some warning</div>
         </transition>
       </div>
     </div>
@@ -78,7 +89,7 @@
 
   .slide-leave-active {
     animation: slide-out 1s ease-out forwards;
-    transition: opacity 3s;
+    transition: opacity 1s;
     opacity: 0;
   }
 
