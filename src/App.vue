@@ -9,11 +9,18 @@
         <transition name="fade">
           <div class="alert alert-info" v-show="show">This is some info</div>
         </transition>
-        <transition name="slide" type="animation">
+        <transition name="slide" type="animation" appear>
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
         <!-- With appear attribute the animation trigger occurs after dom is loaded-->
-        <transition name="fade" appear>
+        <transition name="fade">
+          <div class="alert alert-info" v-if="show">This is some info</div>
+        </transition>
+        <transition
+          appear
+          enter-active-class="animated bounce"
+          leave-active-class="animated shake"
+        >
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
       </div>
