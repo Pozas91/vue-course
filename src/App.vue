@@ -46,6 +46,7 @@
 
         <br/><br/>
 
+        <!-- Don't look for css classes -->
         <transition
           @before-enter="beforeEnter"
           @enter="enter"
@@ -56,6 +57,7 @@
           @leave="leave"
           @after-leave="afterLeave"
           @leave-cancelled="leaveCancelled"
+          :css="false"
         >
           <div style="width: 100px; height: 100px; background-color: lightgreen" v-if="load"></div>
         </transition>
