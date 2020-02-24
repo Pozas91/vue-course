@@ -7,5 +7,6 @@
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="animate" level="application" />
+    <orderEntry type="library" name="animate" level="application" />
   </component>
 </module>
