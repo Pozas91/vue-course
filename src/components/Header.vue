@@ -1,14 +1,10 @@
 <template>
   <ul class="nav justify-content-center nav-pills">
     <li role="presentation" class="nav-item">
-      <router-link to="/" class="nav-link active">
-        Home
-      </router-link>
+      <router-link to="/" class="nav-link" tag="li" active-class="active" exact>Home</router-link>
     </li>
     <li role="presentation" class="nav-item">
-      <router-link to="/user" class="nav-link">
-        User
-      </router-link>
+      <router-link to="/user" class="nav-link" tag="li" active-class="active">User</router-link>
     </li>
   </ul>
 </template>
