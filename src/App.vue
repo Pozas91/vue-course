@@ -4,9 +4,10 @@
       <div class="col-12">
         <h1>Routing</h1>
         <hr/>
-        <!--        <app-header></app-header>-->
         <router-view name="header-top"></router-view>
-        <router-view></router-view>
+        <transition name="slide" mode="out-in">
+          <router-view></router-view>
+        </transition>
         <router-view name="header-bottom"></router-view>
       </div>
     </div>
@@ -24,4 +25,5 @@
 </script>
 
 <style>
+
 </style>
