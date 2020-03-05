@@ -1,17 +1,16 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h1>Section Title</h1>
+    <div class="container">
 
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
-  export default {}
+
+    export default {
+
+    }
 </script>
 
 <style>
+
 </style>
