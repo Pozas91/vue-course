@@ -1,13 +1,26 @@
 <template>
   <div class="container-fluid">
-    <router-view></router-view>
+    <app-header></app-header>
+    <div class="row">
+      <div class="col-12">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {}
+  import Header from './components/Header';
+
+  export default {
+    components: {
+      appHeader: Header
+    }
+  }
 </script>
 
 <style>
-
+  body {
+    padding: 30px;
+  }
 </style>
