@@ -13,10 +13,11 @@
       <div class="card-body">
         <div class="form-group">
           <label for="quantity"></label>
-          <input type="number" class="form-control" placeholder="Quantity" id="quantity" v-model="quantity"/>
+          <input type="number" class="form-control" placeholder="Quantity" id="quantity" v-model="quantity"
+                 step="0.01"/>
         </div>
 
-        <button class="btn btn-success" @click="buyStock">
+        <button class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(quantity)">
           Buy
         </button>
       </div>
