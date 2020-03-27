@@ -14,11 +14,12 @@
         <div class="form-group">
           <label for="quantity"></label>
           <input type="number" class="form-control" placeholder="Quantity" id="quantity" v-model.number="quantity"
-                 step="1"/>
+                 step="1" :class="{danger: insufficientFunds}"/>
         </div>
 
-        <button class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(quantity)">
-          Buy
+        <button class="btn btn-success" @click="buyStock"
+                :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)">
+          {{insufficientFunds ? 'Insufficient Funds' : 'Buy'}}
         </button>
       </div>
     </div>
@@ -31,6 +32,14 @@
     data() {
       return {
         quantity: 0
+      }
+    },
+    computed: {
+      funds() {
+        return this.$store.getters.funds;
+      },
+      insufficientFunds() {
+        return (this.quantity * this.stock.price) > this.funds;
       }
     },
     methods: {
@@ -50,4 +59,7 @@
 </script>
 
 <style scoped>
+  .danger {
+    border: 1px solid red;
+  }
 </style>
