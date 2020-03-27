@@ -1,6 +1,6 @@
 let path = require('path');
 let webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -12,30 +12,37 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
+        test: /\.css$/i,
+        use: [{
+          loader: 'vue-style-loader'
+        }, {
+          loader: 'css-loader',
+          options: {modules: true}
+        }],
       },
       {
-        test: /\.scss$/,
+        test: /\.scss$/i,
         use: [
           'vue-style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
           'sass-loader'
         ],
       },
       {
-        test: /\.sass$/,
+        test: /\.sass$/i,
         use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader?indentedSyntax'
+          // 'vue-style-loader',
+          {loader: 'css-loader', options: {modules: true}},
+          'sass-loader'
         ],
       },
       {
-        test: /\.vue$/,
+        test: /\.vue$/i,
         loader: 'vue-loader',
         options: {
           loaders: {
@@ -43,13 +50,13 @@ module.exports = {
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
             'scss': [
-              'vue-style-loader',
-              'css-loader',
+              'vue-style-loader!css-loader',
+              // 'css-loader',
               'sass-loader'
             ],
             'sass': [
-              'vue-style-loader',
-              'css-loader',
+              'vue-style-loader!css-loader',
+              // 'css-loader',
               'sass-loader?indentedSyntax'
             ]
           }
@@ -85,7 +92,7 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map'
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map';
@@ -96,18 +103,23 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      uglifyOptions: {
-        compress: false,
-        ecma: 6,
-        mangle: true
-      },
-      sourceMap: true
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        // warning: false
+      }
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
+    // new UglifyJsPlugin({
+    //   cache: true,
+    //   parallel: true,
+    //   uglifyOptions: {
+    //     compress: false,
+    //     ecma: 6,
+    //     mangle: true
+    //   },
+    //   sourceMap: true
+    // })
   ])
 }
