@@ -13,8 +13,8 @@
       <div class="card-body">
         <div class="form-group">
           <label for="quantity"></label>
-          <input type="number" class="form-control" placeholder="Quantity" id="quantity" v-model="quantity"
-                 step="0.01"/>
+          <input type="number" class="form-control" placeholder="Quantity" id="quantity" v-model.number="quantity"
+                 step="1"/>
         </div>
 
         <button class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(quantity)">
@@ -37,12 +37,12 @@
       buyStock() {
         const order = {
           stockId: this.stock.id,
-          stockPrice: this.stockPrice,
+          stockPrice: this.stock.price,
           quantity: this.quantity
         };
 
         console.log(order);
-
+        this.$store.dispatch('buyStock', order);
         this.quantity = 0;
       }
     }
