@@ -40,6 +40,7 @@ const actions = {
 const getters = {
   stockPortfolio(state, getters) {
     return state.stocks.map(stock => {
+      console.log(stock);
       const record = getters.stocks.find(element => element.id === stock.id);
 
       return {
