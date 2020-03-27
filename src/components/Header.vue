@@ -17,7 +17,9 @@
         <router-link to="/stocks" activeClass="active" tag="li" class="nav-item">
           <a class="nav-link">Stocks</a>
         </router-link>
-
+      </ul>
+      
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
@@ -28,6 +30,8 @@
             <a class="dropdown-item" href="#">Load Data</a>
           </div>
         </li>
+
+        <strong class="navbar-text navbar-right">Funds: {{funds}}</strong>
       </ul>
     </div>
   </nav>
@@ -35,7 +39,11 @@
 
 <script>
   export default {
-    name: "Home"
+    computed: {
+      funds() {
+        return this.$store.getters.funds;
+      }
+    }
   }
 </script>
 
