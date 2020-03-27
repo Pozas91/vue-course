@@ -31,7 +31,7 @@
           </div>
         </li>
 
-        <strong class="navbar-text navbar-right">Funds: {{funds}}</strong>
+        <strong class="navbar-text navbar-right">Funds: {{funds | currency}}</strong>
       </ul>
     </div>
   </nav>
