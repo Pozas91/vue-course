@@ -108,7 +108,7 @@
 
         console.log(formData);
         axios
-          .post('https://curso-vue-cd4c5.firebaseio.com/users.json', formData)
+          .post('/users.json', formData)
           .then(res => console.log(res))
           .catch(error => console.log(error));
       }

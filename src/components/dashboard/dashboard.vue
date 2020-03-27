@@ -17,7 +17,7 @@
     },
     created() {
       axios
-        .get('https://curso-vue-cd4c5.firebaseio.com/users.json')
+        .get('/users.json')
         .then(res => {
 
           console.log(res);
