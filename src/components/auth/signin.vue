@@ -5,16 +5,16 @@
         <div class="input">
           <label for="email">Mail</label>
           <input
-                  type="email"
-                  id="email"
-                  v-model="email">
+            type="email"
+            id="email"
+            v-model="email">
         </div>
         <div class="input">
           <label for="password">Password</label>
           <input
-                  type="password"
-                  id="password"
-                  v-model="password">
+            type="password"
+            id="password"
+            v-model="password">
         </div>
         <div class="submit">
           <button type="submit">Submit</button>
@@ -25,19 +25,29 @@
 </template>
 
 <script>
+  import axios from '../../axios-auth';
+
   export default {
-    data () {
+    data() {
       return {
         email: '',
         password: ''
       }
     },
     methods: {
-      onSubmit () {
+      onSubmit() {
         const formData = {
           email: this.email,
           password: this.password,
         };
+
+        axios.post('accounts:signInWithPassword?key=AIzaSyDSKeBi0BlcEjtKFhTwvkdg5Lu6JwnrA7o', {
+          email: formData.email,
+          password: formData.password,
+          returnSecureToken: true
+        })
+          .then(res => console.log(res))
+          .catch(error => console.log(error));
 
         console.log(formData)
       }
