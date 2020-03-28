@@ -26,6 +26,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    setLogoutTimer({commit, dispatch}, expirationTime) {
+      setTimeout(() => {
+        dispatch('logout');
+      }, expirationTime * 1000);
+    },
     signUp({commit, dispatch}, authData) {
 
       axios.post('accounts:signUp?key=AIzaSyDSKeBi0BlcEjtKFhTwvkdg5Lu6JwnrA7o', {
@@ -42,11 +47,12 @@ export default new Vuex.Store({
           });
 
           dispatch('storeUser', authData);
+          dispatch('setLogoutTimer', res.data.expiresIn);
 
         })
         .catch(error => console.log(error));
     },
-    login({commit}, authData) {
+    login({commit, dispatch}, authData) {
 
       axios.post('accounts:signInWithPassword?key=AIzaSyDSKeBi0BlcEjtKFhTwvkdg5Lu6JwnrA7o', {
         email: authData.email,
@@ -60,6 +66,8 @@ export default new Vuex.Store({
             token: res.data.idToken,
             userId: res.data.localId
           });
+
+          dispatch('setLogoutTimer', res.data.expiresIn);
 
           router.replace('/dashboard');
 
