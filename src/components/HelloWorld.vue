@@ -90,6 +90,7 @@
     </v-row>
     <div>
       {{url}}
+      {{notUrl}}
     </div>
   </v-container>
 </template>
