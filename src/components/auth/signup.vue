@@ -104,7 +104,10 @@
     validations: {
       email: {
         required,
-        email
+        email,
+        unique: val => {
+          return val !== 'pozas_91@hotmail.com';
+        }
       },
       age: {
         required,
