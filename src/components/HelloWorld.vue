@@ -88,6 +88,11 @@
         </v-row>
       </v-col>
     </v-row>
+    <footer>
+      <small>
+        Example
+      </small>
+    </footer>
   </v-container>
 </template>
 
@@ -149,3 +154,10 @@ export default {
   })
 }
 </script>
+<style scoped lang="scss">
+  footer {
+    small {
+      color: red;
+    }
+  }
+</style>
