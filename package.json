@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "latest",
     "vue-router": "latest",
+    "vuelidate": "^0.7.5",
     "vuex": "latest"
   },
   "browserslist": [
