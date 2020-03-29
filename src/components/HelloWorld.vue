@@ -88,19 +88,17 @@
         </v-row>
       </v-col>
     </v-row>
-    <footer>
-      <small>
-        Example
-      </small>
-    </footer>
+    <div>
+      {{url}}
+    </div>
   </v-container>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-
   data: () => ({
+    url: process.env.VUE_APP_URL,
     ecosystem: [
       {
         text: 'vuetify-loader',
@@ -154,6 +152,7 @@ export default {
   })
 }
 </script>
+
 <style scoped lang="scss">
   footer {
     small {
