@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import router from './router';
 import store from './store';
+import Vuelidate from "vuelidate/src";
+
+Vue.use(Vuelidate);
 
 axios.defaults.baseURL = 'https://curso-vue-cd4c5.firebaseio.com/';
 // axios.defaults.headers.common['Authorization'] = 'fasfdsa';
