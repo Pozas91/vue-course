@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import router from './router';
 import store from './store';
-import Vuelidate from "vuelidate/src";
+import Vuelidate from "vuelidate";
 
 Vue.use(Vuelidate);
 
