@@ -24,7 +24,7 @@
     "css-loader": "^3.4.2",
     "file-loader": "^1.1.4",
     "node-libs-browser": "^2.2.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "sass-loader": "^6.0.6",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.11",
